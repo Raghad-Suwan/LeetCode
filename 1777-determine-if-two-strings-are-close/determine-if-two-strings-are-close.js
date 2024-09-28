@@ -20,7 +20,7 @@ var closeStrings = function(word1, word2) {
     for (let char of word2) {
         count2[char] = (count2[char] || 0) + 1;
     }
-    
+    // حطيناهم بset عشان المقارنة 
     const chars1 = Object.keys(count1);
     const chars2 = Object.keys(count2);
     //مقارنة مجموعة الاحرف
@@ -33,7 +33,7 @@ var closeStrings = function(word1, word2) {
             return false; 
         }
     }
-    
+    //مقارنة التكرار
     const freq1 = Object.values(count1).sort((a, b) => a - b);
     const freq2 = Object.values(count2).sort((a, b) => a - b);
 
@@ -42,6 +42,5 @@ var closeStrings = function(word1, word2) {
     }
 
     return true;
-    
     
 };
