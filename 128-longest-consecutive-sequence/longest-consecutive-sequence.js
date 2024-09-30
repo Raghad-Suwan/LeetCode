@@ -6,24 +6,25 @@ var longestConsecutive = function(nums) {
 
     if (nums.length === 0) return 0;
 
-    const numSet = new Set(nums);
-    let result =0 ; 
+    let set = new Set (nums);
+    let res=0;
 
-    for (let num of numSet){
+    for ( let number of set  ){
 
-        if (!numSet.has(num - 1)) {
-            let currNum = num;
-            let count =1 ;
+        if ( !set.has(number -1)){
+            let currentNum =number;
+            let result =1 ;
         
-        while (numSet.has(currNum + 1)) {
-            currNum++;
-            count++;
+
+        while ( set.has(currentNum +1) ){
+            currentNum++;
+            result ++;
         }
-        if( result < count){
-            result = count 
+        if (res< result){
+            res=result
         }
         }
     }
-    return result;
+    return res
     
 };
