@@ -8,26 +8,23 @@ var canJump = function(nums) {
         return true;
     }
 
-
-
+//هي قيمة الانديكس اللي بنط عليه
     let max = nums[0];
 
-    for(let i = 0; i < nums.length; i++){
-        
-        if(i >= max && nums[i] == 0) {
-            return false;
+    for ( let i =0 ; i< nums.length ; i++ ){
 
+        if ( i>=max && nums[i] == 0 ) {
+            return false
+        } 
+
+        if ( i + nums[i] > max ) {
+            max =( nums[i] +i);
         }
 
-
-        if(i + nums[i] > max){
-            max = i + nums[i];
-        }
-
-        if(max >= nums.length-1){
-
-            return true;
+        if ( max >=  nums.length-1 ){
+            return true 
         }
     }
-    return false;   
+     return false 
+
 };
