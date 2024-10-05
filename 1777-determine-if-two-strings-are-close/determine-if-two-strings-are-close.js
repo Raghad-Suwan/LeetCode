@@ -4,43 +4,46 @@
  * @return {boolean}
  */
 var closeStrings = function(word1, word2) {
+
     if (word1.length !== word2.length) {
         return false;
     }
     
     if (word1 == word2) return true
-    //لتخزين عدد مرات ظهور كل حرف
-    const count1 = {};
-    const count2 = {};
-    //عدد الأحرف في الكلمة 1
-    for (let char of word1) {
-        count1[char] = (count1[char] || 0) + 1;
-    }
-    // عدد الأحرف في الكلمة 2
-    for (let char of word2) {
-        count2[char] = (count2[char] || 0) + 1;
-    }
-    // حطيناهم بset عشان المقارنة 
-    const chars1 = Object.keys(count1);
-    const chars2 = Object.keys(count2);
-    //مقارنة مجموعة الاحرف
-    if (chars1.length !== chars2.length) {
-        return false;
-    }
-    //إذا كان هناك أي حرف مفقود في word2
-    for (let char of chars1) {
-        if (!count2[char]) {
-            return false; 
-        }
-    }
-    //مقارنة التكرار
-    const freq1 = Object.values(count1).sort((a, b) => a - b);
-    const freq2 = Object.values(count2).sort((a, b) => a - b);
 
-    for (let i = 0; i < freq1.length; i++) {
-        if (freq1[i] !== freq2[i]) return false; 
+//تخزين كل حرف وكم مرة بتكرر - key= char  , value = the count of the char
+    let present1 ={}
+    let present2 = {}
+
+    for (let char of word1 ){
+        present1[char] = ( present1[char] || 0 )+1
+
+    }
+    for (let char of word2 ){
+        present2[char] = ( present2[char] || 0 )+1
+
     }
 
-    return true;
-    
+
+//تخزين الاحرف 
+    let character1 = Object.keys(present1)
+    let character2 = Object.keys(present2)
+// التاكد ان طول الاحرف متساوي
+    if (character1.length !== character2.length ) return false 
+//التاكد من ان الاحرف نفسها ولا يوجد حرف زائد او ناقص 
+    for (let char of character1){
+        if(!present2[char])
+        return false 
+    }
+//هنا لمقارنة التكرار 
+    let freq1 = Object.values(present1).sort( (a,b) => a-b)
+    let freq2 = Object.values(present2).sort( (a,b) => a-b)
+
+    for (let i =0 ; i< freq1.length ; i++){
+        if (freq1[i] !== freq2[i]) return false 
+    }
+
+
+return true
+ 
 };
