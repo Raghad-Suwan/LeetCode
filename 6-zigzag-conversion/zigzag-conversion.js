@@ -5,38 +5,43 @@
  */
 
 var convert = function (s, numRows) {
-    if (numRows === 1) return s;
+    if (numRows === 1 || numRows >= s.length) return s;
 
-    let rows = [];
-    for (let i = 0; i < numRows; i++) {
-        rows[i] = [];
+    let row =[]
+   
+
+    for (let i = 0 ; i<numRows ; i++ ){
+        row[i] =[]
     }
     
-    let reverse = false;
-    let index = 0;
-    let tempStr = ""; 
     
-    for (let i = 0; i < s.length; i++) {
-        tempStr += s[i];
-        rows[index].push(s[i]);
-        
-        if (reverse) {
-            index--;
-        } else {
-            index++;
+    let index = 0 
+    let reverse = false ;
+
+    for (let i =0 ; i< s.length ; i++){
+
+    row[index].push(s[i]);
+
+        if(reverse ){
+            index-- 
+        }else {
+            index++ 
         }
-        
-        if (index === 0 || index === numRows - 1) {
-            reverse = !reverse;
+
+        if (index === 0 || index == numRows-1){
+            reverse = !reverse
         }
+
+
     }
 
-    console.log(tempStr);
+    let out = []
 
-    let output = [];
-    for (let i = 0; i < numRows; i++) {
-        output.push(rows[i].join(""));
+    for (let i =0 ; i< numRows ; i++ ){
+        out.push(row[i].join(""))
     }
-    
-    return output.join("");
+    return out.join("")
+
+
+
 };
