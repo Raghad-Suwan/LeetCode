@@ -12,9 +12,11 @@
  * @return {boolean}
  */
 var isSameTree = function(p, q) {
-
+//Checks if both trees are empty
     if (!p && !q) {  return true; }
+    //if one tree is empty while the other is not, returns false.
     if (p === null || q === null) return false;
+    //Compares the values of the current nodes in both trees.
     if (p.val !== q.val) return false;
 
     return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
