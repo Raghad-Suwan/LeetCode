@@ -14,7 +14,6 @@
  */
 var lowestCommonAncestor = function(root, p, q) {
     if (!root) return null 
-    if (p === q) return null  
 
     if (p.val!= q.val){
         if(root.val>p.val && root.val<q.val){
